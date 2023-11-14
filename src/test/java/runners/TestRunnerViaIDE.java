@@ -11,9 +11,9 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {"html:target/cucumber-report/cucumber-report.html",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failed.txt"},
-        monochrome = true,
+        //monochrome = true,
         dryRun = false,
-        tags = "sanity"
+        tags = "@sanity"
 )
 
 public class TestRunnerViaIDE extends AbstractTestNGCucumberTests {

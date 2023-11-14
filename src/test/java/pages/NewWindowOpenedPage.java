@@ -6,26 +6,25 @@ import org.openqa.selenium.support.FindBy;
 public class NewWindowOpenedPage extends BasePage {
 
     @FindBy(id = "firstName")
-    public WebElement firstNameField;
+    private WebElement firstNameField;
 
     @FindBy(id = "lastName")
-    public WebElement lastNameField;
+    private WebElement lastNameField;
 
     @FindBy(id = "englishchbx")
-    public WebElement englishCheckBox;
+    private WebElement englishCheckBox;
 
     @FindBy(id = "registerbtn")
-    public WebElement registerButton;
+    private WebElement registerButton;
 
     @FindBy(id = "msg")
-    public WebElement verificationMessage;
+    private WebElement verificationMessage;
 
     public NewWindowOpenedPage(){
         super();
     }
 
     public void fillOutFirstNameAndLastNameAndChooseEnglishLanguage(String firstName, String lastName) {
-        // driver.manage().window().maximize();
         firstNameField.sendKeys(firstName);
         lastNameField.sendKeys(lastName);
         englishCheckBox.click();

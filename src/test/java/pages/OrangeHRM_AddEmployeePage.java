@@ -6,24 +6,24 @@ import org.openqa.selenium.support.FindBy;
 
 public class OrangeHRM_AddEmployeePage extends BasePage {
 
-    String uniqueSetFirstName;
-    String uniqueSetMiddleName;
-    String uniqueSetLastName;
+    private String uniqueSetFirstName;
+    private String uniqueSetMiddleName;
+    private String uniqueSetLastName;
 
     @FindBy(xpath="//input[@name='firstName']")
-    public WebElement actualFirstName;
+    private WebElement actualFirstName;
 
     @FindBy(xpath="//input[@name='middleName']")
-    public WebElement actualMiddleName;
+    private WebElement actualMiddleName;
 
     @FindBy(xpath = "//input[@name='lastName']")
-    public WebElement actualLastName;
+    private WebElement actualLastName;
 
     @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
-    public WebElement employeeID;
+    private WebElement employeeID;
 
     @FindBy(xpath = "//button[@type = 'submit']")
-    public WebElement saveButton;
+    private WebElement saveButton;
 
     public OrangeHRM_AddEmployeePage () {
         super();
@@ -65,5 +65,9 @@ public class OrangeHRM_AddEmployeePage extends BasePage {
 
     public String getUniqueSetLastName() {
         return uniqueSetLastName;
+    }
+
+    public void clickOnSaveButton() {
+        clickElement(saveButton);
     }
 }

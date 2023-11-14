@@ -8,7 +8,7 @@ import org.testng.Assert;
 import pages.BasePage;
 import pages.OrangeHRM_LoginPage;
 
-public class OrangeHRM_LoginPageSteps extends BasePage {
+public class OrangeHRM_LoginPageSteps {
 
     private final OrangeHRM_LoginPage HRM_LoginPage;
 
@@ -41,21 +41,20 @@ public class OrangeHRM_LoginPageSteps extends BasePage {
         HRM_LoginPage.logInToOrangeHRM();
     }
 
-    @Then("user validates message {string} under Username field")
-    public void user_validates_message_under_username_field(String expectedMessageUnderUsernameField) {
+    @Then("user verifies message {string} under Username field")
+    public void verifyMessageUnderUsernameField(String expectedMessageUnderUsernameField) {
        Assert.assertEquals(HRM_LoginPage.getTextUnderUsernameField(), expectedMessageUnderUsernameField,
                "Text message verification under username field failed");
     }
 
-    @Then("user validates message {string} under Password field")
-    public void user_validates_message_under_password_field(String expectedMessageUnderPasswordField) {
+    @Then("user verifies message {string} under Password field")
+    public void verifyMessageUnderPasswordField(String expectedMessageUnderPasswordField) {
         Assert.assertEquals(HRM_LoginPage.getTextUnderPasswordField(), expectedMessageUnderPasswordField,
                 "Text message verification under password field failed");
     }
 
-    @Then("user validates {string} error message")
-    public void userValidatesErrorMessage(String expectedErrorMessage) {
-
+    @Then("user verifies {string}")
+    public void verifyErrorMessage(String expectedErrorMessage) {
         Assert.assertEquals(HRM_LoginPage.getTextFromErrorMessage(), expectedErrorMessage,
                 "Error message does not match");
     }

@@ -10,23 +10,23 @@ import java.util.Random;
 
 public class OrangeHRM_ContactDetailsPage extends BasePage {
 
-    String address;
-    String textOfRandomCountryFromDropDown;
+    private String address;
+    private String textOfRandomCountryFromDropDown;
 
     @FindBy(xpath="//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//div[1]//div[1]//div[1]//div[1]//div[2]//input[1]")
-    public WebElement addressStreet;
+    private WebElement addressStreet;
 
     @FindBy(xpath = "//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']")
-    public WebElement selectButton;
+    private WebElement selectButton;
 
     @FindBy(xpath = "//div[@role='option']")
-    public List <WebElement> countryDropdownOptions;
+    private List <WebElement> countryDropdownOptions;
 
     @FindBy(xpath = "//div[@class='oxd-select-text-input']")
-    public WebElement actualDisplayedCountryFromDropdown;
+    private WebElement actualDisplayedCountryFromDropdown;
 
     @FindBy(xpath = "//button[@type='submit']")
-    public WebElement saveButton;
+    private WebElement saveButton;
 
     public OrangeHRM_ContactDetailsPage() {
         super();
@@ -54,7 +54,6 @@ public class OrangeHRM_ContactDetailsPage extends BasePage {
             throw new RuntimeException(e);
         }
     }
-
     public void clickSelectButton() {
         clickElement(selectButton);
     }
@@ -64,7 +63,6 @@ public class OrangeHRM_ContactDetailsPage extends BasePage {
         WebElement randomCountryFromDropDown = countryDropdownOptions.get(randomIndex);
         textOfRandomCountryFromDropDown = randomCountryFromDropDown.getText();
         clickElement(randomCountryFromDropDown);
-
     }
 
     public void clickEditAndFillOutAddress() {

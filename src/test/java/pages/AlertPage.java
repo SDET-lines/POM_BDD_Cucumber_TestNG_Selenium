@@ -7,13 +7,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-
 import java.time.Duration;
 
 public class AlertPage extends BasePage {
 
     @FindBy(id = "alertButton")
-    private WebElement regularAlertButton;
+    private WebElement alertButton;
 
     @FindBy(id = "timerAlertButton")
     private WebElement timerAlertButton;
@@ -32,21 +31,24 @@ public class AlertPage extends BasePage {
         navigateToURL("https://demoqa.com/alerts");
     }
 
-    public void switchToTheCorrespondentAlertType (String alertType) {
+    public void switchToTheCorrespondingAlertType(String alertType) {
         switch (alertType) {
-            case "regular" -> clickElement(regularAlertButton);
+            case "regular" -> clickElement(alertButton);
             case "timer"   -> clickElement(timerAlertButton);
             case "confirm" -> clickElement(confirmButton);
             case "prompt"  -> clickElement(promptButton);
+            default -> throw new IllegalArgumentException("Invalid alert type: " + alertType);
         }
-
     }
 
     public void waitForAlertAndValidateText(String expectedAlertText) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(8));
         wait.until(ExpectedConditions.alertIsPresent());
         Alert myAlert = getDriver().switchTo().alert();
-        Assert.assertEquals(myAlert.getText(), expectedAlertText);
-        myAlert.accept();
+        try {
+            Assert.assertEquals(myAlert.getText(), expectedAlertText);
+        } finally {
+            myAlert.accept();
+        }
     }
 }

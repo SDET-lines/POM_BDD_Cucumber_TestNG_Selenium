@@ -4,11 +4,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pages.BasePage;
 import pages.IFramePage;
 import pages.NestedFramesPage;
 
-public class IFramesPageSteps extends BasePage {
+public class IFramesPageSteps  {
 
     private final IFramePage iFramesPage;
     private final NestedFramesPage nestedFramesPage;
@@ -19,29 +18,31 @@ public class IFramesPageSteps extends BasePage {
     }
 
     @Given("user navigates to iFrame page")
-    public void user_navigates_to_iFrame_page() {
+    public void navigateToIFramePage() {
         iFramesPage.navigateToIFramePage();
     }
 
     @When("user enters {int} symbols of random text into the text box on iFrame Page")
-    public void user_enters_symbols_of_random_text_into_the_text_box_on_i_frame_page(int length) {
+    public void enterSymbolsOfRandomText(int length) {
        iFramesPage.setSpecifiedQuantityOfRandomText(length);
     }
 
     @Then("user verifies the entered text on iFrames Page")
-    public void user_verifies_the_entered_text_on_i_frames_page() {
-        Assert.assertEquals(iFramesPage.getRandomTextToEnter(), iFramesPage.getTextEntered(),
-                "Entered text verification failed");
+    public void verifyEnteredText() {
+        String actualText = iFramesPage.getTextEntered();
+        String expectedText = iFramesPage.getRandomTextToEnter();
+        Assert.assertEquals(actualText, expectedText,"Entered text verification failed");
     }
 
     @Given("user navigates to the Nested Frames page")
-    public void userNavigatesToTheNestedFramesPage() {
+    public void navigateToNestedFramesPage() {
         nestedFramesPage.navigateToNestedFramesPage();
     }
 
     @Then("user should be able to verify the text {string} in the left frame")
-    public void user_should_be_able_to_verify_the_text_in_the_left_frame(String string) {
+    public void verifyTextInLeftFrame(String expectedText) {
         nestedFramesPage.switchToLeftFrame();
-        Assert.assertEquals(nestedFramesPage.getFrameText(), string,"Text verification in the left frame failed");
+        String actualText = nestedFramesPage.getFrameText();
+        Assert.assertEquals(actualText, expectedText,"Text verification in the left frame failed");
     }
 }

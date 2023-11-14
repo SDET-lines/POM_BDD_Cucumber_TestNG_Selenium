@@ -34,6 +34,6 @@ public class JqueryDblClickPage extends BasePage {
     }
 
     public Boolean getCssValueBlock() {
-        return block.getCssValue("background").contains("255, 255, 0");
+        return block.getCssValue("background").contains("255, 255, 0??");
     }
 }

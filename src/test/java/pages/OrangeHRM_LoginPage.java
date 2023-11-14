@@ -7,22 +7,22 @@ import utilities.ConfigurationReader;
 public class OrangeHRM_LoginPage extends BasePage {
 
     @FindBy(xpath = "//*[@name='username']")
-    public WebElement usernameTextInput;
+    private WebElement usernameTextInput;
 
     @FindBy(xpath = "//input[@name='password']")
-    public WebElement passwordTextInput;
+    private WebElement passwordTextInput;
 
     @FindBy(xpath = "//button[@type='submit']")
-    public WebElement loginButton;
+    private WebElement loginButton;
 
     @FindBy(xpath = "//div[@role='alert']//div//p")
-    public WebElement errorMessage;
+    private WebElement errorMessage;
 
     @FindBy(xpath = "//div[@class='orangehrm-login-slot-wrapper']//div[1]//div[1]//span[1]")
-    public WebElement messageUnderUsernameField;
+    private WebElement messageUnderUsernameField;
 
     @FindBy(xpath = "//div[@class='orangehrm-login-form']//div[2]//div[1]//span[1]")
-    public WebElement messageUnderPasswordField;
+    private WebElement messageUnderPasswordField;
 
     public OrangeHRM_LoginPage() {
         super();
@@ -36,7 +36,7 @@ public class OrangeHRM_LoginPage extends BasePage {
         sendKeys(usernameTextInput, string);
     }
 
-    public void setUsername() {
+    public void setUsernameByPropertyFile() {
         sendKeys(usernameTextInput, ConfigurationReader.getProperty("username"));
     }
 
@@ -54,20 +54,20 @@ public class OrangeHRM_LoginPage extends BasePage {
 
     public void logInToOrangeHRM() {
         navigateToHRM_LoginPage();
-        setUsername();
+        setUsernameByPropertyFile();
         setPassword();
         clickLoginButton();
     }
 
     public String getTextUnderUsernameField() {
-        return getTextFromWebElement(messageUnderUsernameField);
+        return getText(messageUnderUsernameField);
     }
 
     public String getTextUnderPasswordField() {
-        return getTextFromWebElement(messageUnderPasswordField);
+        return getText(messageUnderPasswordField);
     }
 
     public String getTextFromErrorMessage() {
-        return getTextFromWebElement(errorMessage);
+        return getText(errorMessage);
     }
 }

@@ -1,17 +1,16 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Then;
-import pages.BasePage;
 import pages.RightClickPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
 
-public class RightClickSteps extends BasePage {
+public class RightClickPageSteps {
 
     private final RightClickPage rightClickPage;
 
-    public RightClickSteps (RightClickPage rightClickPage) {
+    public RightClickPageSteps(RightClickPage rightClickPage) {
         this.rightClickPage=rightClickPage;
     }
 

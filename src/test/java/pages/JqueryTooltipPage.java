@@ -15,8 +15,8 @@ public class JqueryTooltipPage extends BasePage {
     @FindBy(xpath = "//div[@class='ui-tooltip-content']")
     private WebElement tooltip;
 
-    public JqueryTooltipPage(){
-       super();
+    public JqueryTooltipPage() {
+        super();
     }
 
     public void navigateToJqueryTooltipPage() {
@@ -27,12 +27,13 @@ public class JqueryTooltipPage extends BasePage {
         getDriver().switchTo().frame(iframe);
     }
 
+    public String getTextTooltip() {
+        return tooltip.getText();
+    }
+
     public void hoverOverTheField() {
         Actions actions = new Actions(getDriver());
         actions.moveToElement(ageTextBox).perform();
     }
-
-    public String getTextTooltip() {
-        return tooltip.getText();
-    }
 }
+

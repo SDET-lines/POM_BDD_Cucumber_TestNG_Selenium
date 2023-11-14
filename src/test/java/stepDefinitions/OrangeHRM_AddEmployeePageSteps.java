@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pages.*;
 
-public class OrangeHRM_AddEmployeePageSteps extends BasePage {
+public class OrangeHRM_AddEmployeePageSteps {
 
     private final OrangeHRM_HomePage homePage;
     private final OrangeHRM_AddEmployeePage addEmployeePage;
@@ -31,18 +31,13 @@ public class OrangeHRM_AddEmployeePageSteps extends BasePage {
         addEmployeePage.setFullName();
     }
 
-//    @Then("user verifies employee number is not empty")
-//    public void user_verifies_employee_number_is_not_empty() {
-//        Assert.assertNotNull(addEmployeePage.getEmployeeNumberValue());
-//    }
-
     @Then("user click on save")
     public void user_clicks_on_save() {
-        addEmployeePage.saveButton.click();
+        addEmployeePage.clickOnSaveButton();
     }
 
     @Then("user validates new account got created with correct details")
-    public void user_verifies_new_account_got_created_with_correct_details() {
+    public void verifyNewAccountDetails() {
          Assert.assertEquals(addEmployeePage.getActualFirstName(), addEmployeePage.getUniqueSetFirstName());
          Assert.assertEquals(addEmployeePage.getActualMiddleName(), addEmployeePage.getUniqueSetMiddleName());
          Assert.assertEquals(addEmployeePage.getActualLastName(), addEmployeePage.getUniqueSetLastName());

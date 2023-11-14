@@ -10,14 +10,14 @@ import pages.NewTabOpenedPage;
 import pages.NewWindowOpenedPage;
 import pages.WindowHandlesPage;
 
-public class WindowHandlesSteps extends BasePage {
+public class WindowHandlesPageSteps extends BasePage {
 
     private final WindowHandlesPage windowHandlesPage;
     private final NewWindowOpenedPage newWindowOpened;
     private final NewTabOpenedPage newTabOpened;
 
-    public WindowHandlesSteps (WindowHandlesPage windowHandles, NewWindowOpenedPage newWindowOpenedPage,
-                               NewTabOpenedPage newTabOpened) {
+    public WindowHandlesPageSteps(WindowHandlesPage windowHandles, NewWindowOpenedPage newWindowOpenedPage,
+                                  NewTabOpenedPage newTabOpened) {
         this.windowHandlesPage =windowHandles;
         this.newWindowOpened=newWindowOpenedPage;
         this.newTabOpened=newTabOpened;

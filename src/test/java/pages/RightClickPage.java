@@ -8,10 +8,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class RightClickPage extends BasePage {
 
-   // private final WebDriver driver = getDriver();
-
     @FindBy(css = "span[class='context-menu-one btn btn-neutral']")
-    public WebElement rightClickButton;
+    private WebElement rightClickButton;
 
     @FindBy(xpath = "//span")
     private WebElement rightClickOptions;
@@ -32,9 +30,9 @@ public class RightClickPage extends BasePage {
         rightClickOptions.findElement(By.xpath("//span[text()='" + optionText + "']")).click();
     }
 
-    public void switchToAlertAndVerifyIt(String string) {
+    public void switchToAlertAndVerifyIt(String expectedAlertText) {
         Alert myAlert = getDriver().switchTo().alert();
-        Assert.assertEquals(string, myAlert.getText());
+        Assert.assertEquals(myAlert.getText(), expectedAlertText, "Alert text verification failed");
         myAlert.accept();
     }
 }

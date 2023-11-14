@@ -12,13 +12,13 @@ public class WindowHandlesPage extends BasePage {
     private String textEntered;
 
     @FindBy(id = "newWindowBtn")
-    public WebElement openNewWindowButton;
+    private WebElement openNewWindowButton;
 
     @FindBy(id = "newTabBtn")
-    public WebElement openNewTabButton;
+    private WebElement openNewTabButton;
 
     @FindBy(id = "name")
-    public WebElement textBox;
+    private WebElement textBox;
 
     public WindowHandlesPage(){
         super();

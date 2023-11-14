@@ -16,21 +16,21 @@ Feature: User verifications for OrangeHRM Login page functionality
             Message "Required" should be displayed under Username field
     When user enters "admin123" password
     And user clicks on login button
-    Then user validates message "Required" under Username field
+    Then user verifies message "Required" under Username field
 
   @negative
   Scenario: User shouldn't be able to login to OrangeHRM with missing Password.
             Message "Required" should be displayed under Password field
     When user enters "Admin" username
     And user clicks on login button
-    Then user validates message "Required" under Password field
+    Then user verifies message "Required" under Password field
 
   @negative
   Scenario Outline: User should not be able to login to OrangeHRM with invalid credentials
     When user enters "<username>" username
     And user enters "<password>" password
     And user clicks on login button
-    Then user validates "<errorMessage>" error message
+    Then user verifies "<errorMessage>"
 
     # this is a data driven testing (Scenario Outline)
     Examples:

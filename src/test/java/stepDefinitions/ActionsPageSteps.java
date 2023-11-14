@@ -4,12 +4,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pages.BasePage;
 import pages.DHTMLPage;
 import pages.JqueryDblClickPage;
 import pages.JqueryTooltipPage;
 
-public class ActionsPageSteps extends BasePage {
+public class ActionsPageSteps  {
 
     private final DHTMLPage dhtmlPage;
     private final JqueryDblClickPage jqueryDblClickPage;
@@ -22,12 +21,12 @@ public class ActionsPageSteps extends BasePage {
         this.jqueryTooltipPage = jqueryTooltipPage;    }
 
     @Given("user navigates to DHTML Page")
-    public void user_navigates_to_dhtml_page()  {
+    public void navigateToDHTMLPage()  {
         dhtmlPage.navigateToDHTMLPage();
     }
 
     @When("user should be able to drag and drop capital to its city")
-    public void user_should_be_able_to_drag_and_drop_capital_to_its_city() {
+    public void dragAndDropCapitalToItsCity() {
           dhtmlPage.dragAndDropCapitalToItsCity();
     }
 

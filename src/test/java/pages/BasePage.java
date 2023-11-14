@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BasePage {
 
-    private final int DEFAULT_EXPLICIT_TIMEOUT = 8;
+    private final int DEFAULT_EXPLICIT_TIMEOUT_SECONDS = 8;
 
     public BasePage() {
         PageFactory.initElements(getDriver(),this);
@@ -29,34 +29,36 @@ public class BasePage {
         getDriver().get(URL);
     }
 
-    public void clear(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT));
-        wait.until(ExpectedConditions.elementToBeClickable(element)).clear();
+    private WebElement waitForElementToBeClickable(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT_SECONDS));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void sendKeys (WebElement element, String textToSend) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT));
-        wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToSend);
+    public String getText(WebElement element) {
+        return waitForElementToBeClickable(element).getText();
     }
 
     public void clickElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT));
-        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+        waitForElementToBeClickable(element).click();
     }
 
-    public String getTextFromWebElement(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT));
-        wait.until(ExpectedConditions.visibilityOf(element));
-        return element.getText();
+    public void clear(WebElement element) {
+        waitForElementToBeClickable(element).clear();
+    }
+
+    public void sendKeys (WebElement element, String textToSend) {
+        waitForElementToBeClickable(element).sendKeys(textToSend);
+    }
+
+    public List<WebElement> visibilityOfAllElements (List<WebElement> elements) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT_SECONDS));
+        return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
     public void clickElementInListByIndex(List<WebElement> elements, int index) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT));
-        // Wait for the presence of the list of elements
-        wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 
         // Check if the index is within the bounds of the list
-        if (index >= 0 && index < elements.size()) {
+        if (index >= 0 && index < visibilityOfAllElements(elements).size()) {
             // Click the element at the specified index
             WebElement element = elements.get(index);
             element.click();
