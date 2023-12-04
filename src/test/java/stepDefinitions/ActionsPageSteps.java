@@ -66,9 +66,27 @@ public class ActionsPageSteps  {
         jqueryTooltipPage.hoverOverTheField();
     }
 
-    @Then("user validates tooltip on JQuery UI Page")
-    public void user_validates_tooltip_on_j_query_ui_page() {
+    @Then("user verifies tooltip on JQuery UI Page")
+    public void VerifyTooltipOnJQueryIUPpage() {
         Assert.assertEquals(jqueryTooltipPage.getTextTooltip(), "We ask for your age only for statistical purposes.",
                 "Tooltip hover over verification failed");
     }
+
+    @Given("user navigates to a new page")
+    public void user_navigates_to_a_new_page() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @When("user perform some action")
+    public void user_perform_some_action() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("user verifies the action output")
+    public void user_verifies_the_action_output() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
 }

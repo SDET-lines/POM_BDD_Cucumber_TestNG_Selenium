@@ -1,4 +1,4 @@
-@regression
+@r1
 Feature: user verifications for Frames functionality
 
   Scenario: user verifies a possibility of enter a text into the text box on iFrame Page
@@ -8,4 +8,4 @@ Feature: user verifications for Frames functionality
 
   Scenario: user verifies of nested frames functionality
     Given user navigates to the Nested Frames page
-    Then user should be able to verify the text "LEFT?" in the left frame
+    Then user should be able to verify the text "LEFT" in the left frame

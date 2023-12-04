@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,12 +16,12 @@ public class BasePage {
 
     private final int DEFAULT_EXPLICIT_TIMEOUT_SECONDS = 8;
 
-    public BasePage() {
-        PageFactory.initElements(getDriver(),this);
-    }
-
     public WebDriver getDriver(){
         return DriverManager.getDriver();
+    }
+
+    public BasePage() {
+        PageFactory.initElements(getDriver(),this);
     }
 
     public void navigateToURL(String URL) {
@@ -82,19 +81,19 @@ public class BasePage {
     }
 
     public void acceptAlert() {
-        Alert myAlert = getDriver().switchTo().alert();
-        myAlert.accept();
+        getDriver().switchTo().alert().accept();
     }
 
     public String generateRandomStringWithAllPossibleCharacters(int length) {
 
-        String ALL_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:'\",.<>?/\\`~";
+        String allChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:'\",.<>?/\\`~";
         SecureRandom random = new SecureRandom();
 
         StringBuilder randomString = new StringBuilder(length);
+
         for (int i = 0; i < length; i++) {
-            int index = random.nextInt(ALL_CHARS.length());
-            randomString.append(ALL_CHARS.charAt(index));
+            int index = random.nextInt(allChars.length());
+            randomString.append(allChars.charAt(index));
         }
         return randomString.toString();
     }

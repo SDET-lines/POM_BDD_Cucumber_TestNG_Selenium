@@ -17,14 +17,14 @@ public class OrangeHRM_HomePageSteps {
     }
 
     @And("user verifies main tabs on OrangeHRM Homepage via ListOfMaps")
-    public void user_verifies_main_tabs_on_HRM_Homepage_via_ListOfMaps(DataTable data) {
-        List <Map <String,String>> maps = data.asMaps();
+    public void user_verifies_main_tabs_on_HRM_Homepage_via_ListOfMaps(DataTable dataTable) {
+        List <Map <String,String>> maps = dataTable.asMaps();
         homePage.verifyMainTabsViaListOfMaps(maps);
     }
 
     @And("user verifies main tabs on OrangeHRM Homepage with ListOfData")
-    public void user_verifies_main_tabs_on_HRM_Homepage_with_ListOfData(DataTable data) {
-        List <String> listOfTabs = data.asList();
+    public void user_verifies_main_tabs_on_HRM_Homepage_with_ListOfData(DataTable dataTable) {
+        List <String> listOfTabs = dataTable.asList();
         homePage.verifyMainTabsViaListOfData(listOfTabs);
     }
 

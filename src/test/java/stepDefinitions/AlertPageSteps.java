@@ -20,7 +20,7 @@ public class AlertPageSteps {
 
     @When("user clicks on {string} on Alerts Page")
     public void user_clicks_on_alert_on_Alerts_Page(String alertType) {
-        alertPage.switchToTheCorrespondingAlertType(alertType);
+        alertPage.clickOnTheCorrespondingAlertType(alertType);
     }
 
     @Then("user should be able to validate {string} alert on Alert Page")

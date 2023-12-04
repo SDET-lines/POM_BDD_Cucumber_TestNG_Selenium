@@ -3,7 +3,7 @@
 <suite name="Suite" data-provider-thread-count="2">
     <test name="Test" >
         <classes>
-            <class name="runners.TestRunnerViaIDE"/>
+            <class name="runners.TestRunner"/>
         </classes>
     </test>
 </suite>

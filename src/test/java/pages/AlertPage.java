@@ -31,7 +31,7 @@ public class AlertPage extends BasePage {
         navigateToURL("https://demoqa.com/alerts");
     }
 
-    public void switchToTheCorrespondingAlertType(String alertType) {
+    public void clickOnTheCorrespondingAlertType(String alertType) {
         switch (alertType) {
             case "regular" -> clickElement(alertButton);
             case "timer"   -> clickElement(timerAlertButton);

@@ -29,7 +29,7 @@ public class OrangeHRM_LoginPage extends BasePage {
     }
 
     public void navigateToHRM_LoginPage() {
-        navigateToURL("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        navigateToURL(ConfigurationReader.getProperty("url"));
     }
 
     public void setHRM_UsernameByFeatureFile(String string) {

@@ -22,12 +22,12 @@ public class OrangeHRM_LoginPageSteps {
     }
 
     @When("user enters {string} username")
-    public void user_enters_username(String string) {
+    public void setUsername(String string) {
        HRM_LoginPage.setHRM_UsernameByFeatureFile(string);
     }
 
     @And("user enters {string} password")
-    public void user_enters_password(String string) {
+    public void setPassword(String string) {
         HRM_LoginPage.setHRM_PasswordByFeatureFile(string);
     }
 

@@ -15,4 +15,9 @@ Feature: This functionality validates scenarios for Actions Page
   Scenario: user should be able to verify tooltip JQuery UI Page
     Given user navigates to JQuery UI page
     When user hovers over the tooltip field
-    Then user validates tooltip on JQuery UI Page
+    Then user verifies tooltip on JQuery UI Page
+
+  Scenario: new additional scenario
+    Given user navigates to a new page
+    When user perform some action
+    Then user verifies the action output

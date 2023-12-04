@@ -6,10 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class OrangeHRM_AddEmployeePage extends BasePage {
 
-    private String uniqueSetFirstName;
-    private String uniqueSetMiddleName;
-    private String uniqueSetLastName;
-
     @FindBy(xpath="//input[@name='firstName']")
     private WebElement actualFirstName;
 
@@ -24,6 +20,10 @@ public class OrangeHRM_AddEmployeePage extends BasePage {
 
     @FindBy(xpath = "//button[@type = 'submit']")
     private WebElement saveButton;
+
+    private String uniqueSetFirstName;
+    private String uniqueSetMiddleName;
+    private String uniqueSetLastName;
 
     public OrangeHRM_AddEmployeePage () {
         super();

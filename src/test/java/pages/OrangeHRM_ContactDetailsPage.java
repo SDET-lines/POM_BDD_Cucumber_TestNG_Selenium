@@ -10,9 +10,6 @@ import java.util.Random;
 
 public class OrangeHRM_ContactDetailsPage extends BasePage {
 
-    private String address;
-    private String textOfRandomCountryFromDropDown;
-
     @FindBy(xpath="//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//div[1]//div[1]//div[1]//div[1]//div[2]//input[1]")
     private WebElement addressStreet;
 
@@ -31,6 +28,9 @@ public class OrangeHRM_ContactDetailsPage extends BasePage {
     public OrangeHRM_ContactDetailsPage() {
         super();
     }
+
+    private String address;
+    private String textOfRandomCountryFromDropDown;
 
     public void clickSaveButton() {
         clickElement(saveButton);

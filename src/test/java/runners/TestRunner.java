@@ -12,10 +12,11 @@ import io.cucumber.testng.CucumberOptions;
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failed.txt"},
         monochrome = true,
+        dryRun = false,
         tags = "@sanity"
 )
 
-public class TestRunnerViaJenkins extends AbstractTestNGCucumberTests {
+public class TestRunner extends AbstractTestNGCucumberTests {
     @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios(){
