@@ -6,8 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utilities.DriverManager;
-
+import utilities.WebDriverManager;
 import java.security.SecureRandom;
 import java.time.Duration;
 import java.util.List;
@@ -17,7 +16,7 @@ public class BasePage {
     private final int DEFAULT_EXPLICIT_TIMEOUT_SECONDS = 8;
 
     public WebDriver getDriver(){
-        return DriverManager.getDriver();
+        return WebDriverManager.getDriver();
     }
 
     public BasePage() {
@@ -31,6 +30,11 @@ public class BasePage {
     private WebElement waitForElementToBeClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT_SECONDS));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public List<WebElement> visibilityOfAllElements (List<WebElement> elements) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT_SECONDS));
+        return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
     public String getText(WebElement element) {
@@ -47,11 +51,6 @@ public class BasePage {
 
     public void sendKeys (WebElement element, String textToSend) {
         waitForElementToBeClickable(element).sendKeys(textToSend);
-    }
-
-    public List<WebElement> visibilityOfAllElements (List<WebElement> elements) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(DEFAULT_EXPLICIT_TIMEOUT_SECONDS));
-        return wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 
     public void clickElementInListByIndex(List<WebElement> elements, int index) {
@@ -78,6 +77,18 @@ public class BasePage {
 
     public void switchToFrame (WebElement element) {
         getDriver().switchTo().frame(element);
+    }
+
+    public void switchToFrame (String nameOrId) {
+        getDriver().switchTo().frame(nameOrId);
+    }
+
+    public void switchToWindow (String windowId) {
+        getDriver().switchTo().window(windowId);
+    }
+
+    public void closeTabOrWindow () {
+        getDriver().close();
     }
 
     public void acceptAlert() {

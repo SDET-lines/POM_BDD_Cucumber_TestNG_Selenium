@@ -42,13 +42,13 @@ public class AlertPage extends BasePage {
     }
 
     public void waitForAlertAndValidateText(String expectedAlertText) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(8));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(6));
         wait.until(ExpectedConditions.alertIsPresent());
-        Alert myAlert = getDriver().switchTo().alert();
+        Alert currentAlert = getDriver().switchTo().alert();
         try {
-            Assert.assertEquals(myAlert.getText(), expectedAlertText);
+            Assert.assertEquals(currentAlert.getText(), expectedAlertText);
         } finally {
-            myAlert.accept();
+            currentAlert.accept();
         }
     }
 }

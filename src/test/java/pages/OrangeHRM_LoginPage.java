@@ -32,19 +32,19 @@ public class OrangeHRM_LoginPage extends BasePage {
         navigateToURL(ConfigurationReader.getProperty("url"));
     }
 
-    public void setHRM_UsernameByFeatureFile(String string) {
-        sendKeys(usernameTextInput, string);
+    public void setHRM_UsernameByFeatureFile(String username) {
+        sendKeys(usernameTextInput, username);
+    }
+
+    public void setHRM_PasswordByFeatureFile(String password) {
+        sendKeys(passwordTextInput, password);
     }
 
     public void setUsernameByPropertyFile() {
         sendKeys(usernameTextInput, ConfigurationReader.getProperty("username"));
     }
 
-    public void setHRM_PasswordByFeatureFile(String string) {
-        sendKeys(passwordTextInput, string);
-    }
-
-    public void setPassword() {
+    public void setPasswordByPropertyFile() {
         sendKeys(passwordTextInput, ConfigurationReader.getProperty("password"));
     }
 
@@ -55,7 +55,7 @@ public class OrangeHRM_LoginPage extends BasePage {
     public void logInToOrangeHRM() {
         navigateToHRM_LoginPage();
         setUsernameByPropertyFile();
-        setPassword();
+        setPasswordByPropertyFile();
         clickLoginButton();
     }
 

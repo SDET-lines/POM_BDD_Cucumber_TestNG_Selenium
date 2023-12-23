@@ -1,5 +1,3 @@
-@regression @addEmployee
-
 Feature: user verifications for HRM Employee Page
 
   Background:
@@ -11,7 +9,6 @@ Feature: user verifications for HRM Employee Page
     And user fills out first, middle and last name
     And user clicks on save
     Then user validates new account got created with correct details
-
 
   Scenario: as an admin I should be able to successfully add Contact Details
     When user clicks on PIM tab

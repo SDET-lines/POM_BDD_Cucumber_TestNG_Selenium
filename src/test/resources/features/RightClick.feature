@@ -1,15 +1,14 @@
-@regression
-Feature: Right click button
+Feature: Right click button list alerts verifications
 
-  Scenario Outline: Right click button and alert handling
+  Scenario Outline: Right click button and alerts handling
     Given user navigates to the given website
     When right clicks on the button
-    And click all the "<options>" available in the right click
-    Then switch to "<expectedAlert>" and verify it
+    And click the "<option>" from the list
+    Then the alert should display the text "<expectedAlert>"
 
-    # Scenario Outline is a data driven testing ()
+    # Scenario Outline is a data driven testing
     Examples:
-      | options      | expectedAlert  |
+      | option       | expectedAlert  |
       | Edit         | clicked: edit  |
       | Cut          | clicked: cut   |
       | Copy         | clicked: copy  |

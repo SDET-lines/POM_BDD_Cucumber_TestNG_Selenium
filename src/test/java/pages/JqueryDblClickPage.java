@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 public class JqueryDblClickPage extends BasePage {
 
     @FindBy(css = "iframe[width='100%']")
-    private WebElement demo_iframe;
+    private WebElement demoIframe;
 
     @FindBy(xpath = "//span[text()='Double click the block']//preceding-sibling::div")
     private WebElement block;
@@ -23,17 +23,17 @@ public class JqueryDblClickPage extends BasePage {
 
     public void switchToTheDemoIframeWithScrolling() {
         JavascriptExecutor jse = (JavascriptExecutor) getDriver();
-        jse.executeScript("arguments[0].scrollIntoView()", demo_iframe);
-        jse.executeScript("window.scrollBy(0, -50)");
-        getDriver().switchTo().frame(demo_iframe);
+        jse.executeScript("arguments[0].scrollIntoView()", demoIframe);
+        //getDriver().switchTo().frame(demo_iframe);
+        switchToFrame(demoIframe);
     }
 
-    public void doubleClickTheBox() {
+    public void doubleClickTheBlock() {
         Actions actions = new Actions(getDriver());
         actions.doubleClick(block).perform();
     }
 
-    public Boolean getCssValueBlock() {
-        return block.getCssValue("background").contains("255, 255, 0??");
+    public Boolean getBlockCssValue() {
+        return block.getCssValue("background").contains("255, 255, 0");
     }
 }

@@ -19,7 +19,7 @@ public class DHTMLPage extends BasePage {
         navigateToURL("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
     }
 
-    public void dragAndDropCapitalToItsCity() {
+    public void dragAndDropCapitalToItsCountry() {
         dragAndDrop(oslo, norway);
     }
 

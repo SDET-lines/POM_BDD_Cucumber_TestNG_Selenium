@@ -17,8 +17,8 @@ public class NestedFramesPage extends BasePage {
     }
 
     public void switchToLeftFrame() {
-        getDriver().switchTo().frame("frame-top");
-        getDriver().switchTo().frame("frame-left");
+        switchToFrame("frame-top");
+        switchToFrame("frame-left");
     }
 
     public String getFrameText() {

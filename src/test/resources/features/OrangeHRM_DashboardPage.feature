@@ -1,14 +1,10 @@
-@regression
-Feature: user validation for Homepage functionality
+Feature: user validations for OrangeHRM Dashboard Page functionality
 
   Background:
-    Given user navigates to OrangeHRM Login Page
-    When user enters "Admin" username
-    And user enters "admin123" password
-    And user clicks on login button
+    Given user logs in to OrangeHRM
 
-  Scenario: User should be able to verify main tabs on OrangeHRM Homepage via ListOfMaps
-    Then user verifies main tabs on OrangeHRM Homepage via ListOfMaps
+  Scenario: User should be able to validate main tabs on OrangeHRM Homepage via ListOfMaps
+    Then user validates main tabs on Dashboard Page via ListOfMaps
       | TabName     |
       | Admin       |
       | PIM         |
@@ -23,8 +19,8 @@ Feature: user validation for Homepage functionality
       | Claim       |
       | Buzz        |
 
-  Scenario: User should be able to verify main tabs on OrangeHRM Homepage via ListOfData
-    Then user verifies main tabs on OrangeHRM Homepage with ListOfData
+  Scenario: User should be able to verify main tabs on Dashboard Page via ListOfData
+    Then user validates main tabs on Dashboard Page via ListOfData
       | Admin       |
       | PIM         |
       | Leave       |

@@ -7,21 +7,19 @@ Feature: User handles additional windows
   Scenario: user handles a new browser window
     When user clicks on Open New Window button
     And switch to the new window opened
-    And fills out "User_first_name", "User_last_name", choose English language
+    And fills out "User_first_name", "User_last_name" and choose English language
     And click register button on the new opened page
     Then verify message "Registration is Successful" is present
     When close the window
-    And return to the parent window
     And enter the text "a new browser window was handled successfully"
     Then verify the text is present
 
   Scenario: user handles a new tab in the existing browser window
     When user clicks on Open New Tab button
     And switch to the new tab opened
-    And click button to display an alert box
+    When click button to display an alert box
     And handle alert
-    Then verify Popup box output "You selected alert popup"
+    Then verify popup box output "You selected alert popup"
     When close the new tab
-    And return to the parent window
     And enter the text "a new tab window was handled successfully"
     Then verify the text is present

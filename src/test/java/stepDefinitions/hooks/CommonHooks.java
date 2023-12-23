@@ -7,8 +7,8 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import static utilities.DriverManager.cleanupDriver;
-import static utilities.DriverManager.getDriver;
+import static utilities.WebDriverManager.cleanupDriver;
+import static utilities.WebDriverManager.getDriver;
 
 public class CommonHooks {
 

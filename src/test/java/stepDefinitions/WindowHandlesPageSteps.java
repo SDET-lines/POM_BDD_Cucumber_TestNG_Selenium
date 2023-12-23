@@ -38,7 +38,7 @@ public class WindowHandlesPageSteps extends BasePage {
         windowHandlesPage.switchToChildWindowOrNewTab();
     }
 
-    @When("fills out {string}, {string}, choose English language")
+    @When("fills out {string}, {string} and choose English language")
     public void fills_out_fields_and_choose_english_language(String firstName, String lastName) {
        newWindowOpened.fillOutFirstNameAndLastNameAndChooseEnglishLanguage(firstName,lastName);
     }
@@ -56,12 +56,7 @@ public class WindowHandlesPageSteps extends BasePage {
 
     @When("close the window")
     public void close_the_window() {
-        getDriver().close();
-    }
-
-    @And("return to the parent window")
-    public void return_to_the_parent_window() {
-       windowHandlesPage.returnToTheParentWindow();
+        newWindowOpened.closeWindow();
     }
 
     @And("enter the text {string}")
@@ -85,22 +80,22 @@ public class WindowHandlesPageSteps extends BasePage {
         windowHandlesPage.switchToChildWindowOrNewTab();
     }
 
-    @And("click button to display an alert box")
+    @When("click button to display an alert box")
     public void click_button_to_display_an_alert_box() {
         newTabOpened.clickOnClickMeAlertBoxButton();
     }
 
     @And("handle alert")
     public void handle_alert() {
-        acceptAlert();
+        newTabOpened.closeAlert();
     }
 
     @When("close the new tab")
     public void close_the_new_tab() {
-        getDriver().close();
+        newTabOpened.CloseTab();
     }
 
-    @Then("verify Popup box output {string}")
+    @Then("verify popup box output {string}")
     public void verify_popup_box_output(String string) {
         Assert.assertEquals(newTabOpened.getTextPopUpBoxOutput(), string, "Popup box output does not match");
     }

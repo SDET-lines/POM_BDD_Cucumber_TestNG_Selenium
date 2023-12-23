@@ -1,10 +1,10 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Then;
+import org.testng.Assert;
 import pages.RightClickPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-
 
 public class RightClickPageSteps {
 
@@ -24,13 +24,14 @@ public class RightClickPageSteps {
         rightClickPage.rightClickOnTheButton();
     }
 
-    @When("click all the {string} available in the right click")
-    public void click_all_the_available_in_the_right_click(String optionText) {
+    @When("click the {string} from the list")
+    public void click_the_option_from_the_list(String optionText) {
         rightClickPage.clickRightClickOption(optionText);
     }
 
-    @Then("switch to {string} and verify it")
-    public void switch_to_and_verify_it(String string) {
-        rightClickPage.switchToAlertAndVerifyIt(string);
+    @Then("the alert should display the text {string}")
+    public void the_alert_should_display_the_text (String expectedAlertText) {
+        String actualAlertText = rightClickPage.switchToAlertAcceptAndGetText();
+        Assert.assertEquals(actualAlertText, expectedAlertText, "Alert text verification failed");
     }
 }

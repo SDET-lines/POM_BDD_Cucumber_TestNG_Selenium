@@ -8,10 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.Random;
 
-public class OrangeHRM_ContactDetailsPage extends BasePage {
+public class OrangeHRM_PIM_ContactDetailsPage extends BasePage {
 
     @FindBy(xpath="//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//div[1]//div[1]//div[1]//div[1]//div[2]//input[1]")
-    private WebElement addressStreet;
+    private WebElement streetAddress;
 
     @FindBy(xpath = "//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']")
     private WebElement selectButton;
@@ -22,32 +22,28 @@ public class OrangeHRM_ContactDetailsPage extends BasePage {
     @FindBy(xpath = "//div[@class='oxd-select-text-input']")
     private WebElement actualDisplayedCountryFromDropdown;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "//button[@type = 'submit']")
     private WebElement saveButton;
 
-    public OrangeHRM_ContactDetailsPage() {
+    private String generatedAddress;
+    private String textOfRandomCountryFromDropDown;
+
+    public OrangeHRM_PIM_ContactDetailsPage() {
         super();
     }
 
-    private String address;
-    private String textOfRandomCountryFromDropDown;
-
-    public void clickSaveButton() {
-        clickElement(saveButton);
+    public void clickStreetAddress() {
+        clickElement(streetAddress);
     }
 
-    public void clickAddressStreet() {
-        clickElement(addressStreet);
+    public void clearStreetAddress() {
+        clear(streetAddress);
     }
 
-    public void clearAddressStreet() {
-        clear(addressStreet);
-    }
-
-    public void sendTextToAddressStreet()  {
+    public void sendTextToStreetAddress()  {
         Faker fake = new Faker();
-        address = fake.address().streetAddress();
-        sendKeys(addressStreet, address);
+        generatedAddress = fake.address().streetAddress();
+        sendKeys(streetAddress, generatedAddress);
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -65,10 +61,10 @@ public class OrangeHRM_ContactDetailsPage extends BasePage {
         clickElement(randomCountryFromDropDown);
     }
 
-    public void clickEditAndFillOutAddress() {
-        clickAddressStreet();
-        clearAddressStreet();
-        sendTextToAddressStreet();
+    public void FillOutAddress() {
+        clickStreetAddress();
+        clearStreetAddress();
+        sendTextToStreetAddress();
         clickSelectButton();
        clickSelectedCountryFromDropdown();
         try {
@@ -78,12 +74,12 @@ public class OrangeHRM_ContactDetailsPage extends BasePage {
         }
     }
 
-    public String getAddress() {
-        return address;
+    public String getGeneratedAddress() {
+        return generatedAddress;
     }
 
     public String getActualStreetAddress() {
-        return addressStreet.getAttribute("value");
+        return streetAddress.getAttribute("value");
     }
 
     public String getActualDisplayedCountry() {
@@ -92,5 +88,9 @@ public class OrangeHRM_ContactDetailsPage extends BasePage {
 
     public String getChosenCountryFromDropdown() {
         return textOfRandomCountryFromDropDown;
+    }
+
+    public void clickOnSaveButton() {
+        clickElement(saveButton);
     }
 }

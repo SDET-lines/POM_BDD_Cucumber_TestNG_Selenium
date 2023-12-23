@@ -3,8 +3,9 @@ package utilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import java.time.Duration;
 
-public class DriverManager {
+public class WebDriverManager {
 
     private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
@@ -25,6 +26,7 @@ public class DriverManager {
             default -> throw new IllegalArgumentException("Unsupported browser type: " + browserType);
         }
         driver.manage().window().maximize();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         return driver;
     }
 

@@ -25,9 +25,9 @@ public class ActionsPageSteps  {
         dhtmlPage.navigateToDHTMLPage();
     }
 
-    @When("user should be able to drag and drop capital to its city")
-    public void dragAndDropCapitalToItsCity() {
-          dhtmlPage.dragAndDropCapitalToItsCity();
+    @When("user should be able to drag and drop capital to its country")
+    public void dragAndDropCapitalToItsCountry() {
+          dhtmlPage.dragAndDropCapitalToItsCountry();
     }
 
     @Then("user verifies drag and drop performed successfully")
@@ -35,8 +35,8 @@ public class ActionsPageSteps  {
         Assert.assertTrue(dhtmlPage.getCssValueOslo(),"Color verification failed");
     }
 
-    @Given("navigate to the jquery website")
-    public void navigate_to_the_jquery_website() {
+    @Given("user navigates to the jquery webpage")
+    public void navigate_to_the_jquery_webpage() {
        jqueryDblClickPage.navigateToJqueryDblClickPage();
     }
 
@@ -45,14 +45,14 @@ public class ActionsPageSteps  {
         jqueryDblClickPage.switchToTheDemoIframeWithScrolling();
     }
 
-    @When("double click the box")
-    public void double_click_the_box() {
-       jqueryDblClickPage.doubleClickTheBox();
+    @When("double click the block")
+    public void double_click_the_block() {
+       jqueryDblClickPage.doubleClickTheBlock();
     }
 
-    @Then("verify the box color is changed")
-    public void verify_the_box_color_changed() {
-        Assert.assertTrue(jqueryDblClickPage.getCssValueBlock(),"Color verification failed");
+    @Then("verify the block color is changed")
+    public void verify_the_block_color_changed() {
+        Assert.assertTrue(jqueryDblClickPage.getBlockCssValue(),"Color verification failed");
     }
 
     @Given("user navigates to JQuery UI page")
@@ -71,22 +71,4 @@ public class ActionsPageSteps  {
         Assert.assertEquals(jqueryTooltipPage.getTextTooltip(), "We ask for your age only for statistical purposes.",
                 "Tooltip hover over verification failed");
     }
-
-    @Given("user navigates to a new page")
-    public void user_navigates_to_a_new_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @When("user perform some action")
-    public void user_perform_some_action() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("user verifies the action output")
-    public void user_verifies_the_action_output() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
-
 }

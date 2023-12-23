@@ -2,17 +2,13 @@ package pages;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RightClickPage extends BasePage {
 
-    @FindBy(css = "span[class='context-menu-one btn btn-neutral']")
-    private WebElement rightClickButton;
-
-    @FindBy(xpath = "//span")
-    private WebElement rightClickOptions;
+    @FindBy(className = "context-menu-one")
+    private WebElement rightClickMeButton;
 
     public RightClickPage() {
         super();
@@ -23,16 +19,17 @@ public class RightClickPage extends BasePage {
     }
 
     public void rightClickOnTheButton() {
-        rightClick(rightClickButton);
+        rightClick(rightClickMeButton);
     }
 
     public void clickRightClickOption(String optionText) {
-        rightClickOptions.findElement(By.xpath("//span[text()='" + optionText + "']")).click();
+        getDriver().findElement(By.xpath("//span[text()='" + optionText + "']")).click();
     }
 
-    public void switchToAlertAndVerifyIt(String expectedAlertText) {
+    public String switchToAlertAcceptAndGetText() {
         Alert myAlert = getDriver().switchTo().alert();
-        Assert.assertEquals(myAlert.getText(), expectedAlertText, "Alert text verification failed");
+        String alertText = myAlert.getText();
         myAlert.accept();
+        return alertText;
     }
 }

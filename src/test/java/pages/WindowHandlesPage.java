@@ -8,9 +8,6 @@ import java.util.Set;
 
 public class WindowHandlesPage extends BasePage {
 
-    private String parentWindowID;
-    private String textEntered;
-
     @FindBy(id = "newWindowBtn")
     private WebElement openNewWindowButton;
 
@@ -19,6 +16,9 @@ public class WindowHandlesPage extends BasePage {
 
     @FindBy(id = "name")
     private WebElement textBox;
+
+    private String parentWindowID;
+    private String textEntered;
 
     public WindowHandlesPage(){
         super();
@@ -37,25 +37,27 @@ public class WindowHandlesPage extends BasePage {
         Iterator <String> it = windowIDs.iterator();
         parentWindowID = it.next();
         String childWindowID = it.next();
-        getDriver().switchTo().window(childWindowID);
+        switchToWindow(childWindowID);
+        getDriver().manage().window().maximize();
     }
 
-    public void returnToTheParentWindow() {
-        getDriver().switchTo().window(parentWindowID);
+    private void returnToTheParentWindow() {
+        switchToWindow(parentWindowID);
     }
 
     public void enterTextToTheTextBox(String textToEnter) {
+        returnToTheParentWindow();
         textEntered = textToEnter;
         sendKeys(textBox, textToEnter);
+    }
+
+    public String getTextEntered() {
+        return textEntered;
     }
 
     public String getTextBoxValue() {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         return (String) jsExecutor.executeScript("return arguments[0].value;",textBox);
-    }
-
-    public String getTextEntered() {
-        return textEntered;
     }
 
     public void clickOpenNewTabButton() {

@@ -23,7 +23,7 @@ public class AlertPageSteps {
         alertPage.clickOnTheCorrespondingAlertType(alertType);
     }
 
-    @Then("user should be able to validate {string} alert on Alert Page")
+    @Then("user should be able to validate {string} on Alert Page")
     public void userShouldBeAbleToHandleAlertsOnAlertPage(String expectedAlertText) {
         alertPage.waitForAlertAndValidateText(expectedAlertText);
     }

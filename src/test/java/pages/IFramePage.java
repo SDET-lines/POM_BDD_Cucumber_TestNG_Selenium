@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 public class IFramePage extends BasePage {
 
     @FindBy(id="mce_0_ifr")
-    private WebElement iFrameMenu;
+    private WebElement iFrame;
 
     @FindBy(id="tinymce")
     private WebElement iFrameTextInput;
@@ -21,26 +21,18 @@ public class IFramePage extends BasePage {
         navigateToURL("https://the-internet.herokuapp.com/iframe");
     }
 
-    public void generateCertainLengthRandomText(int length) {
+    public void setSpecifiedQuantityOfRandomText(int length) {
+        switchToFrame(iFrame);
         randomTextToEnter = generateRandomStringWithAllPossibleCharacters(length);
-    }
-
-    public void clearIFrameTextInputAndSendText() {
         clear(iFrameTextInput);
         sendKeys(iFrameTextInput, randomTextToEnter);
-    }
-
-    public String getTextEntered() {
-        return iFrameTextInput.getText();
     }
 
     public String getRandomTextToEnter() {
         return randomTextToEnter;
     }
 
-    public void setSpecifiedQuantityOfRandomText(int length) {
-        switchToFrame(iFrameMenu);
-        generateCertainLengthRandomText(length);
-        clearIFrameTextInputAndSendText();
+    public String getTextEntered() {
+        return iFrameTextInput.getText();
     }
 }

@@ -25,9 +25,9 @@ public class NewWindowOpenedPage extends BasePage {
     }
 
     public void fillOutFirstNameAndLastNameAndChooseEnglishLanguage(String firstName, String lastName) {
-        firstNameField.sendKeys(firstName);
-        lastNameField.sendKeys(lastName);
-        englishCheckBox.click();
+        sendKeys(firstNameField, firstName);
+        sendKeys(lastNameField, lastName);
+        clickElement(englishCheckBox);
     }
 
     public void clickRegisterButton() {
@@ -36,6 +36,10 @@ public class NewWindowOpenedPage extends BasePage {
 
     public String getTextFromVerificationMessage() {
         return verificationMessage.getText();
+    }
+
+    public void closeWindow() {
+        closeTabOrWindow();
     }
 }
 

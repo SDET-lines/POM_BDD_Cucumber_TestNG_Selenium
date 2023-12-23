@@ -19,7 +19,15 @@ public class NewTabOpenedPage extends BasePage {
         clickElement(clickMeAlertBoxButton);
     }
 
+    public void closeAlert() {
+        acceptAlert();
+    }
+
     public String getTextPopUpBoxOutput() {
-       return popUpBoxOutput.getText();
+       return getText(popUpBoxOutput);
+    }
+
+    public void CloseTab() {
+        closeTabOrWindow();
     }
 }

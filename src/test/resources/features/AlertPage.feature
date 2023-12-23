@@ -4,7 +4,7 @@ Feature: user validations for Alert functionality
   Scenario Outline: user should be able to validate Alert on Alert Page
     Given user navigates to Alerts Page
     When user clicks on "<alertType>" on Alerts Page
-    Then user should be able to validate "<expectedAlertText>" alert on Alert Page
+    Then user should be able to validate "<expectedAlertText>" on Alert Page
 
     # Scenario Outline is a data driven testing
     Examples:
